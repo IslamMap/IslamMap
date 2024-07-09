@@ -1,3 +1,5 @@
+console.log("I added code!");
+
 document.addEventListener('DOMContentLoaded', function() {
     // Array of placeholder options
     const placeholders = [
