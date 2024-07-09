@@ -1,6 +1,6 @@
     // Import the functions you need from the SDKs you need
-    import { initializeApp } from &quot;https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js&quot;;
-    import { getAnalytics } from &quot;https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js&quot;;
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-analytics.js";
     import {
       getAuth,
       createUserWithEmailAndPassword,
@@ -12,18 +12,18 @@
       signInWithRedirect,
       getRedirectResult,
       sendPasswordResetEmail
-    } from &quot;https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js&quot;;
-    import { getDatabase, ref, set, get, child, update } from &quot;https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js&quot;;
+    } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+    import { getDatabase, ref, set, get, child, update } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-database.js";
   
-    // Your web app&#39;s Firebase configuration
+    // Your web app's Firebase configuration
     const firebaseConfig = {
-      apiKey: &quot;AIzaSyCWJCI1MpcZ-BHcBao0EeWcbLB3nKKygcU&quot;,
-      authDomain: &quot;islam-map-782f1.firebaseapp.com&quot;,
-      projectId: &quot;islam-map-782f1&quot;,
-      storageBucket: &quot;islam-map-782f1.appspot.com&quot;,
-      messagingSenderId: &quot;706140588471&quot;,
-      appId: &quot;1:706140588471:web:86c614fb0bb1f3c47b8032&quot;,
-      measurementId: &quot;G-7H49Y83TP8&quot;
+      apiKey: "AIzaSyCWJCI1MpcZ-BHcBao0EeWcbLB3nKKygcU",
+      authDomain: "islam-map-782f1.firebaseapp.com",
+      projectId: "islam-map-782f1",
+      storageBucket: "islam-map-782f1.appspot.com",
+      messagingSenderId: "706140588471",
+      appId: "1:706140588471:web:86c614fb0bb1f3c47b8032",
+      measurementId: "G-7H49Y83TP8"
     };
   
     // Initialize Firebase
@@ -33,100 +33,100 @@
     const database = getDatabase(app);
     const provider = new GoogleAuthProvider();
   try{
-    document.getElementById(&#39;google-sign-in-btn&#39;).addEventListener(&#39;click&#39;, function() {
-    console.log(&quot;1&quot;);
+    document.getElementById('google-sign-in-btn').addEventListener('click', function() {
+    console.log("1");
 
     signInWithPopup(auth, provider)
-        .then((result) =&gt; {
+        .then((result) => {
 
             const database = getDatabase(app);
 
-            console.log(&quot;2&quot;);
+            console.log("2");
 
             const credential = GoogleAuthProvider.credentialFromResult(result);
-            console.log(&quot;3&quot;);
+            console.log("3");
 
             const token = credential.accessToken;
-            console.log(&quot;4&quot;);
+            console.log("4");
 
             const user_google = result.user;
-            console.log(&quot;5&quot;);
+            console.log("5");
 
             // Check if the user exists in the database before setting data
-            const userRef = ref(database, &#39;users/&#39; + user_google.uid);
-            get(userRef).then((snapshot) =&gt; {
+            const userRef = ref(database, 'users/' + user_google.uid);
+            get(userRef).then((snapshot) => {
                 if (snapshot.exists()) {
-                    console.log(&#39;User already exists in database&#39;);
+                    console.log('User already exists in database');
                     // Optionally, you can update existing data here
                 } else {
-                    console.log(&#39;User does not exist in database&#39;);
+                    console.log('User does not exist in database');
                     // Save user data to the database
                     set(userRef, {
                         email: user_google.email,
                         createdAt: new Date().toISOString(),
                         displayName: user_google.displayName,
                         photoURL: user_google.photoURL
-                    }).then(() =&gt; {
-                        console.log(&#39;User data saved to database&#39;);
-                    }).catch((error) =&gt; {
-                        console.error(&#39;Error saving user data:&#39;, error);
+                    }).then(() => {
+                        console.log('User data saved to database');
+                    }).catch((error) => {
+                        console.error('Error saving user data:', error);
                     });
                 }
 
-            }).catch((error) =&gt; {
-                console.error(&#39;Error checking user data:&#39;, error);
+            }).catch((error) => {
+                console.error('Error checking user data:', error);
             });
 
-            setTimeout(() =&gt; {
-            console.log(&quot;Waited 2 seconds&quot;);
+            setTimeout(() => {
+            console.log("Waited 2 seconds");
             location.reload();
             }, 1500);
         })
-        .catch((error) =&gt; {
+        .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.error(&#39;Error signing in with Google:&#39;, errorCode, errorMessage);
+            console.error('Error signing in with Google:', errorCode, errorMessage);
             alert(errorMessage);
             alert(errorCode);
         });
 });
 
     // Sign-Up Function
-    document.getElementById(&#39;sign-up-form&#39;).addEventListener(&#39;submit&#39;, function(event) {
+    document.getElementById('sign-up-form').addEventListener('submit', function(event) {
       event.preventDefault();
-      const email = document.getElementById(&#39;sign-up-email&#39;).value;
-      const password = document.getElementById(&#39;sign-up-password&#39;).value;
-      const userName = document.getElementById(&#39;sign-up-name&#39;).value;
-      const photo = &quot;https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png&quot;;
+      const email = document.getElementById('sign-up-email').value;
+      const password = document.getElementById('sign-up-password').value;
+      const userName = document.getElementById('sign-up-name').value;
+      const photo = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
   
       createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) =&gt; {
+        .then((userCredential) => {
           const user = userCredential.user;
-          console.log(&#39;Signed up:&#39;, user);
+          console.log('Signed up:', user);
   
           // Save user data to the database
-          set(ref(database, &#39;users/&#39; + user.uid), {
+          set(ref(database, 'users/' + user.uid), {
             displayName: userName,
             photoURL: photo,
             email: email,
             createdAt: new Date().toISOString(),
-            phoneNumeber:&quot;&quot;,
-            dateOfBirth:&quot;&quot;,
-            gender: &quot;Male&quot;,
-            language: &quot;English&quot;,
-            country: &quot;&quot;
+            phoneNumeber:"",
+            dateOfBirth:"",
+            gender: "Male",
+            language: "English",
+            country: ""
           });
   
-          alert(&#39;User signed up successfully!&#39;);
-          setTimeout(() =&gt; {
-            console.log(&quot;Waited 2 seconds&quot;);
+          alert('User signed up successfully!');
+          setTimeout(() => {
+            console.log("Waited 2 seconds");
             location.reload();
             }, 1000);
         })
-        .catch((error) =&gt; {
+        .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.error(&#39;Error signing up:&#39;, errorCode, errorMessage);
+          console.error('Error signing up:', errorCode, errorMessage);
           alert(errorMessage);
         });
     });
@@ -134,46 +134,46 @@
 
 
     // Sign-In Function
-    document.getElementById(&#39;sign-in-form&#39;).addEventListener(&#39;submit&#39;, function(event) {
+    document.getElementById('sign-in-form').addEventListener('submit', function(event) {
       event.preventDefault();
-      const email = document.getElementById(&#39;sign-in-email&#39;).value;
-      const password = document.getElementById(&#39;sign-in-password&#39;).value;
+      const email = document.getElementById('sign-in-email').value;
+      const password = document.getElementById('sign-in-password').value;
   
       signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) =&gt; {
+        .then((userCredential) => {
           const user = userCredential.user;
-          console.log(&#39;Signed in:&#39;, user);
+          console.log('Signed in:', user);
           onSignIn(user);
-          setTimeout(() =&gt; {
-            console.log(&quot;Waited 2 seconds&quot;);
+          setTimeout(() => {
+            console.log("Waited 2 seconds");
             location.reload();
             }, 1500);
         })
-        .catch((error) =&gt; {
+        .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.error(&#39;Error signing in:&#39;, errorCode, errorMessage);
+          console.error('Error signing in:', errorCode, errorMessage);
           alert(errorMessage);
         });
     });
   
     // Sign-Out Function
-    document.getElementById(&#39;sign-out-btn&#39;).addEventListener(&#39;click&#39;, function() {
-      signOut(auth).then(() =&gt; {
-        console.log(&#39;Signed out&#39;);
+    document.getElementById('sign-out-btn').addEventListener('click', function() {
+      signOut(auth).then(() => {
+        console.log('Signed out');
         SignInPageWhenSignedOut();
-        document.getElementById(&#39;user-top-tag-sign-in&#39;).innerHTML = &#39;Guest&#39;; // Clear the div content on sign-out
-      }).catch((error) =&gt; {
-        console.error(&#39;Error signing out:&#39;, error);
+        document.getElementById('user-top-tag-sign-in').innerHTML = 'Guest'; // Clear the div content on sign-out
+      }).catch((error) => {
+        console.error('Error signing out:', error);
       });
     });
   
 }catch{
-    console.log(&quot;Not in sign in page&quot;)
+    console.log("Not in sign in page")
 }
     // Function to handle Google authentication and retrieve user info
     function onSignIn(user_google) {
-      showUserData(user_google.uid).then((userData) =&gt; {
+      showUserData(user_google.uid).then((userData) => {
         if (userData) {
           const profileName = userData.displayName;
           const profileImageURL = userData.photoURL;
@@ -186,39 +186,39 @@
           const profileCountry = userData.country;
   
   
-          const userImage = document.getElementById(&#39;user-top-image-sign-in&#39;);
-          const userName = document.getElementById(&#39;user-top-tag-sign-in&#39;);
+          const userImage = document.getElementById('user-top-image-sign-in');
+          const userName = document.getElementById('user-top-tag-sign-in');
   
           userImage.src = profileImageURL;
   
           const maxLength = 15;
-          if (profileName.length &gt; maxLength) {
-            const truncatedName = profileName.substring(0, maxLength) + &#39;...&#39;;
+          if (profileName.length > maxLength) {
+            const truncatedName = profileName.substring(0, maxLength) + '...';
             userName.textContent = truncatedName;
           } else {
             userName.textContent = profileName;
           }
   
-          console.log(&#39;Profile image updated:&#39;, profileImageURL);
-          console.log(&#39;Additional user data:&#39;, userData);
+          console.log('Profile image updated:', profileImageURL);
+          console.log('Additional user data:', userData);
 
           try{
 
-            const profileImage = document.getElementById(&quot;profile-image&quot;);
-            const profileInputImageURL = document.getElementById(&quot;profile-input-image-url&quot;);
-            const profileInputUsername = document.getElementById(&quot;profile-input-username&quot;);
-            const profileTextEmail = document.getElementById(&quot;profile-bottom-email&quot;);
+            const profileImage = document.getElementById("profile-image");
+            const profileInputImageURL = document.getElementById("profile-input-image-url");
+            const profileInputUsername = document.getElementById("profile-input-username");
+            const profileTextEmail = document.getElementById("profile-bottom-email");
 
-            const phoneNumber = document.getElementById(&#39;profile-input-phone-number&#39;);
-            const dateOfBirth = document.getElementById(&#39;profile-input-date-of-birth&#39;);
-            const gender = document.getElementById(&#39;profile-input-gender&#39;);
-            const language = document.getElementById(&#39;profile-input-language&#39;);
-            const country = document.getElementById(&#39;profile-input-country&#39;);
+            const phoneNumber = document.getElementById('profile-input-phone-number');
+            const dateOfBirth = document.getElementById('profile-input-date-of-birth');
+            const gender = document.getElementById('profile-input-gender');
+            const language = document.getElementById('profile-input-language');
+            const country = document.getElementById('profile-input-country');
 
             profileImage.src = profileImageURL;
             profileInputImageURL.value = profileImageURL;
             profileInputUsername.value = profileName;
-            profileTextEmail.innerHTML = &quot;Signed in as: &quot; + profileEmail;
+            profileTextEmail.innerHTML = "Signed in as: " + profileEmail;
 
             phoneNumber.value =   profilePhoneNumber;
             dateOfBirth.value =   profileDateOfBirth;
@@ -231,57 +231,57 @@
 
           }
           catch{
-            console.log(&quot;Not in Account Page&quot;)
+            console.log("Not in Account Page")
           }
 
         }
-      }).catch((error) =&gt; {
-        console.error(&#39;Error retrieving user data:&#39;, error);
+      }).catch((error) => {
+        console.error('Error retrieving user data:', error);
       });
 
 
       try{
-        const toggleSignContainer = document.getElementById(&quot;toggle-buttons&quot;);
-        const signInFormContainer = document.getElementById(&quot;sign-in-forms-container&quot;);
-        const signInWithGoogleBtn = document.getElementById(&quot;google-sign-in-btn&quot;);
-        const accountProfile = document.getElementById(&quot;account-profile-page&quot;);
+        const toggleSignContainer = document.getElementById("toggle-buttons");
+        const signInFormContainer = document.getElementById("sign-in-forms-container");
+        const signInWithGoogleBtn = document.getElementById("google-sign-in-btn");
+        const accountProfile = document.getElementById("account-profile-page");
 
   
-        toggleSignContainer.style.display = &#39;none&#39;;
-        signInFormContainer.style.display = &#39;none&#39;;
-        signInWithGoogleBtn.style.display = &#39;none&#39;;
-        accountProfile.style.display = &#39;block&#39;;
+        toggleSignContainer.style.display = 'none';
+        signInFormContainer.style.display = 'none';
+        signInWithGoogleBtn.style.display = 'none';
+        accountProfile.style.display = 'block';
 
       } catch {
-        console.log(&quot;Not in Account Page&quot;);
+        console.log("Not in Account Page");
       }
 
 
     }
   
     // Check authentication state
-    onAuthStateChanged(auth, (user) =&gt; {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(&#39;User is signed in:&#39;, user);
+        console.log('User is signed in:', user);
         onSignIn(user);
 
         try{
-        document.getElementById(&quot;update-profile-btn&quot;).addEventListener(&#39;click&#39;, function() {
+        document.getElementById("update-profile-btn").addEventListener('click', function() {
 
-        const profileInputImageURL = document.getElementById(&quot;profile-input-image-url&quot;).value;
-        const profileInputUsername = document.getElementById(&quot;profile-input-username&quot;).value;
-        const phoneNumber = document.getElementById(&#39;profile-input-phone-number&#39;).value;
-        const dateOfBirth = document.getElementById(&#39;profile-input-date-of-birth&#39;).value;
-        const gender = document.getElementById(&#39;profile-input-gender&#39;).value;
-        const language = document.getElementById(&#39;profile-input-language&#39;).value;
-        const country = document.getElementById(&#39;profile-input-country&#39;).value;
+        const profileInputImageURL = document.getElementById("profile-input-image-url").value;
+        const profileInputUsername = document.getElementById("profile-input-username").value;
+        const phoneNumber = document.getElementById('profile-input-phone-number').value;
+        const dateOfBirth = document.getElementById('profile-input-date-of-birth').value;
+        const gender = document.getElementById('profile-input-gender').value;
+        const language = document.getElementById('profile-input-language').value;
+        const country = document.getElementById('profile-input-country').value;
 
-        const updateProvideBtn = document.getElementById(&quot;update-profile-btn&quot;);
+        const updateProvideBtn = document.getElementById("update-profile-btn");
 
 
 
         // Save user data to the database
-        update(ref(database, &#39;users/&#39; + user.uid), {
+        update(ref(database, 'users/' + user.uid), {
         displayName: profileInputUsername,
         photoURL: profileInputImageURL,
         phoneNumeber: phoneNumber,
@@ -292,20 +292,20 @@
 
         });
 
-        updateProvideBtn.innerHTML = &quot;Changes Saved!&quot;;
+        updateProvideBtn.innerHTML = "Changes Saved!";
 
-        setTimeout(() =&gt; {
-  console.log(&quot;Waited 2 seconds&quot;);
+        setTimeout(() => {
+  console.log("Waited 2 seconds");
   location.reload();
 }, 1500);
         });
     }catch{
-        console.log(&quot;Not in Account Page!&quot;);
+        console.log("Not in Account Page!");
     }
 
       } else {
-        console.log(&#39;No user is signed in&#39;);
-        document.getElementById(&#39;user-top-tag-sign-in&#39;).innerHTML = &#39;Guest&#39;;
+        console.log('No user is signed in');
+        document.getElementById('user-top-tag-sign-in').innerHTML = 'Guest';
         SignInPageWhenSignedOut();
       }
     });
@@ -313,61 +313,61 @@
     // Functions for handling sign-in and sign-out page updates
     function SignInPageWhenSignedIn(user) {
       try {
-        const toggleSignContainer = document.getElementById(&quot;toggle-buttons&quot;);
-        const signInFormContainer = document.getElementById(&quot;sign-in-forms-container&quot;);
-        const signInWithGoogleBtn = document.getElementById(&quot;google-sign-in-btn&quot;);
-        const accountProfile = document.getElementById(&quot;account-profile-page&quot;);
+        const toggleSignContainer = document.getElementById("toggle-buttons");
+        const signInFormContainer = document.getElementById("sign-in-forms-container");
+        const signInWithGoogleBtn = document.getElementById("google-sign-in-btn");
+        const accountProfile = document.getElementById("account-profile-page");
   
-        toggleSignContainer.style.display = &#39;none&#39;;
-        signInFormContainer.style.display = &#39;none&#39;;
-        signInWithGoogleBtn.style.display = &#39;none&#39;;
-        accountProfile.style.display = &#39;block&#39;;
+        toggleSignContainer.style.display = 'none';
+        signInFormContainer.style.display = 'none';
+        signInWithGoogleBtn.style.display = 'none';
+        accountProfile.style.display = 'block';
         
 
 
  
 
       } catch {
-        console.log(&quot;Not in sign in page&quot;);
+        console.log("Not in sign in page");
       }
     }
   
     function SignInPageWhenSignedOut() {
       try {
-        const toggleSignContainer = document.getElementById(&quot;toggle-buttons&quot;);
-        const signInFormContainer = document.getElementById(&quot;sign-in-forms-container&quot;);
-        const signInWithGoogleBtn = document.getElementById(&quot;google-sign-in-btn&quot;);
-        const accountProfile = document.getElementById(&quot;account-profile-page&quot;);
+        const toggleSignContainer = document.getElementById("toggle-buttons");
+        const signInFormContainer = document.getElementById("sign-in-forms-container");
+        const signInWithGoogleBtn = document.getElementById("google-sign-in-btn");
+        const accountProfile = document.getElementById("account-profile-page");
   
-        toggleSignContainer.style.display = &#39;block&#39;;
-        signInWithGoogleBtn.style.display = &#39;block&#39;;
-        signInFormContainer.style.display = &#39;block&#39;;
-        accountProfile.style.display = &#39;none&#39;;
+        toggleSignContainer.style.display = 'block';
+        signInWithGoogleBtn.style.display = 'block';
+        signInFormContainer.style.display = 'block';
+        accountProfile.style.display = 'none';
         resetEmailPassword()
       } catch {
-        console.log(&quot;Not in sign in page&quot;);
+        console.log("Not in sign in page");
       }
   
-      document.getElementById(&#39;user-top-image-sign-in&#39;).src = &#39;https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png&#39;;
+      document.getElementById('user-top-image-sign-in').src = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
     }
 
 
   
     // Show user data
     function showUserData(uid) {
-      return new Promise((resolve, reject) =&gt; {
+      return new Promise((resolve, reject) => {
         const dbRef = ref(getDatabase());
         get(child(dbRef, `users/${uid}`))
-          .then((snapshot) =&gt; {
+          .then((snapshot) => {
             if (snapshot.exists()) {
               console.log(snapshot.val());
               resolve(snapshot.val());
             } else {
-              console.log(&quot;No data available&quot;);
+              console.log("No data available");
               resolve(null);
             }
           })
-          .catch((error) =&gt; {
+          .catch((error) => {
             console.error(error);
             reject(error);
           });
@@ -376,17 +376,17 @@
 
 
     function resetEmailPassword (){
-        const reset = document.getElementById(&quot;forgot-password-sign-in&quot;);
-        reset.addEventListener(&quot;click&quot;, function(event){
+        const reset = document.getElementById("forgot-password-sign-in");
+        reset.addEventListener("click", function(event){
             event.preventDefault()
-            const email = document.getElementById(&quot;sign-in-email&quot;).value;
+            const email = document.getElementById("sign-in-email").value;
             sendPasswordResetEmail(auth, email)
-                .then(() =&gt; {
-                    alert(&quot;Email Sent&quot;);
+                .then(() => {
+                    alert("Email Sent");
                     // Password reset email sent!
                     // ..
                 })
-                .catch((error) =&gt; {
+                .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     alert(errorMessage)
@@ -394,3 +394,5 @@
                 });
         });
     }
+
+  
