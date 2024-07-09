@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add more placeholder options as needed
     ];
 
+    try{
     // Get the input element by its ID
     const input = document.getElementById('home-search-bar');
 
@@ -31,4 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Set the placeholder text of the input field
     input.placeholder = placeholders[randomIndex];
+    }catch{
+        console.log("not in home page")
+    }
 });
