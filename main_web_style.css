@@ -1,0 +1,27 @@
+    /* Specific styles for user top sign-in */
+    #user-top-sign-in {
+    
+      margin-left: auto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    }
+
+    /* Specific styles for user tag */
+    #user-top-tag-sign-in {
+    float:left; /* add this */
+
+    margin-right: 10px;
+    font-size: 14px;
+    color: #FFF;
+    style:bold;
+
+    }
+
+    /* Specific styles for profile image */
+    #user-top-image-sign-in {
+    width: 30px;
+    height: 30px;
+    border-radius: 25px; /* Makes the image round */
+    }
