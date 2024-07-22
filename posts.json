@@ -1,37 +1,39 @@
-[
-    {
-        "senderImage": 2131230790,  // Replace with the actual resource ID if needed
-        "title": "I love snap",
-        "contentImage": "https://images.squarespace-cdn.com/content/v1/61c4da8eb1b30a201b9669f2/e2e0e62f-0064-4f86-b9d8-5a55cb7110ca/Korembi-January-2024.jpg?format=1500w",
-        "description": "snap is the best",
-        "url": "https://www.islammap.net/"
-    },
-    {
-        "senderImage": 2131230790,  // Replace with the actual resource ID if needed
-        "title": "Every single day",
-        "contentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Hopetoun_falls.jpg/450px-Hopetoun_falls.jpg",
-        "description": "I dream of snap",
-        "url": "https://www.islammap.net/"
-    },
-    {
-        "senderImage": 2131230790,  // Replace with the actual resource ID if needed
-        "title": "snap is cool",
-        "contentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Galunggung.jpg/450px-Galunggung.jpg",
-        "description": "I love snap",
-        "url": "https://www.islammap.net/"
-    },
-    {
-        "senderImage": 2131230790,  // Replace with the actual resource ID if needed
-        "title": "snap is cool",
-        "contentImage": "https://images.squarespace-cdn.com/content/v1/61c4da8eb1b30a201b9669f2/e2e0e62f-0064-4f86-b9d8-5a55cb7110ca/Korembi-January-2024.jpg?format=1500w",
-        "description": "I love snap",
-        "url": "https://www.islammap.net/"
-    },
-    {
-        "senderImage": 2131230790,  // Replace with the actual resource ID if needed
-        "title": "snap is cool",
-        "contentImage": "https://images.squarespace-cdn.com/content/v1/61c4da8eb1b30a201b9669f2/e2e0e62f-0064-4f86-b9d8-5a55cb7110ca/Korembi-January-2024.jpg?format=1500w",
-        "description": "I love snap",
-        "url": "https://www.islammap.net/"
-    }
-]
+{
+    "listJson" : [
+        {
+            "senderImage": 2131165185,
+            "title": "I changed the Json",
+            "contentImage": "https://images.squarespace-cdn.com/content/v1/61c4da8eb1b30a201b9669f2/e2e0e62f-0064-4f86-b9d8-5a55cb7110ca/Korembi-January-2024.jpg?format=1500w",
+            "description": "snap is the best",
+            "url": "https://www.islammap.net/"
+        },
+        {
+            "senderImage": 2131165185,
+            "title": "Every single day",
+            "contentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Hopetoun_falls.jpg/450px-Hopetoun_falls.jpg",
+            "description": "I dream of snap",
+            "url": "https://www.islammap.net/"
+        },
+        {
+            "senderImage": 2131165185,
+            "title": "snap is cool",
+            "contentImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Galunggung.jpg/450px-Galunggung.jpg",
+            "description": "I love snap",
+            "url": "https://www.islammap.net/"
+        },
+        {
+            "senderImage": 2131165185,
+            "title": "snap is cool",
+            "contentImage": "https://images.squarespace-cdn.com/content/v1/61c4da8eb1b30a201b9669f2/e2e0e62f-0064-4f86-b9d8-5a55cb7110ca/Korembi-January-2024.jpg?format=1500w",
+            "description": "I love snap",
+            "url": "https://www.islammap.net/"
+        },
+        {
+            "senderImage": 2131165185,
+            "title": "snap is cool",
+            "contentImage": "https://images.squarespace-cdn.com/content/v1/61c4da8eb1b30a201b9669f2/e2e0e62f-0064-4f86-b9d8-5a55cb7110ca/Korembi-January-2024.jpg?format=1500w",
+            "description": "I love snap",
+            "url": "https://www.islammap.net/"
+        }
+    ]
+}
