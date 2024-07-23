@@ -9,7 +9,7 @@
         },
         {
             "senderImage": 2131165185,
-            "title": "Every single day",
+            "title": "",
             "contentImage": "https://t3.ftcdn.net/jpg/07/63/06/46/240_F_763064618_yR7ZX6mlMOobshvLrDlRn8gIzyQOU7bC.jpg",
             "description": "I dream of snap",
             "url": "https://www.islammap.net/"
@@ -17,7 +17,7 @@
         {
             "senderImage": 2131165185,
             "title": "snap is cool",
-            "contentImage": "https://t3.ftcdn.net/jpg/08/40/79/48/240_F_840794844_jclLJwEps2qADyXszpy3g8Gqwtkib2G7.jpg",
+            "contentImage": "",
             "description": "I love snap",
             "url": "https://www.islammap.net/"
         },
@@ -25,7 +25,7 @@
             "senderImage": 2131165185,
             "title": "snap is cool",
             "contentImage": "https://t3.ftcdn.net/jpg/07/73/59/14/240_F_773591489_oteY9hSGFM9QmID0IjfkQE9KOXqgVJVo.jpg",
-            "description": "I love snap",
+            "description": "",
             "url": "https://www.islammap.net/"
         },
         {
@@ -33,14 +33,21 @@
             "title": "snap is cool",
             "contentImage": "https://t3.ftcdn.net/jpg/05/71/26/62/240_F_571266253_7HuXAuQKNPOEaFt44faa37kLl8rccQq7.jpg",
             "description": "I love snap",
-            "url": "https://www.islammap.net/"
+            "url": ""
         },
         {
             "senderImage": 2131165185,
             "title": "Every single day",
-            "contentImage": "https://t3.ftcdn.net/jpg/06/50/71/96/240_F_650719656_g7usuCZSQiPG2BHAzqUVeeLR5GU5PkEs.jpg",
+            "contentImage": "",
             "description": "I dream of snap",
-            "url": "https://www.islammap.net/"
+            "url": ""
+        },
+        {
+            "senderImage": 2131165185,
+            "title": "",
+            "contentImage": "",
+            "description": "",
+            "url": ""
         }
 
         
