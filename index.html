@@ -1,46 +1,48 @@
-<script src='home_input_search_bar.js'></script>
-<script src='main_web_script.js'></script>
-<link rel="stylesheet" type='text/css' href='main_web_style.css'>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <a href="posts.json" >Download JSON File</a>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Online Files</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background-color: #282c34;
         }
 
-        .ball {
-            width: 50px;
-            height: 50px;
-            background-color: #61dafb;
-            border-radius: 50%;
-            position: absolute;
-            bottom: 0;
-            animation: bounce 2s infinite ease-in-out;
+        .fancy-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3);
         }
 
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-300px);
-            }
+        .fancy-button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 15px 20px rgba(0, 86, 179, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .fancy-button:active {
+            transform: translateY(1px);
         }
     </style>
 </head>
 <body>
-    <div class="ball"></div>
+    <a href="posts.json" class="fancy-button">Open App JSON File</a>
+    <a href="main_web_script.js" class="fancy-button">Open Website Main JS</a>
+    <a href="home_input_search_bar.js" class="fancy-button">Open Home Page Website's Input Search Bar JS</a>
+    <a href="main_web_style.css" class="fancy-button">Open Main Website Style CSS</a>
 </body>
 </html>
-
